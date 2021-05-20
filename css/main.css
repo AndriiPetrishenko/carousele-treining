@@ -149,3 +149,21 @@ body {
   mix-blend-mode: difference;
   pointer-events: none;
 }
+
+.reviewer-image {
+  border-radius: 50%;
+  transform: scale(0.59);
+  height: auto;
+  margin-bottom: 14px;
+}
+.slick-center .reviewer-image {
+  @media screen and(min-width: $tablet) {
+    width: 186px;
+    transform: scale(1);
+  }
+}
+
+.slider .slick-current {
+  opacity: 0.5;
+  border: 5px yellow dotted;
+}
