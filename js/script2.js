@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('.slider').slick({
         arrows: true, //по-умолчанию включено отображение стрелок
-        dots: true, //по-умолчанию отключены точки внизу
+        dots: false, //по-умолчанию отключены точки внизу
         adaptiveHeight: true, //по-умолчанию выключена автоподстройка высоты слайда
         slidesToShow: 3, //кол-во слайдов, к-рые отображаются одновременно - 
         //ширина между ними рассчитывается автоматом в зависимости от кол-ва одновременно отображающихся слайдов
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
         //ТО ЧТО НУЖНО
 
-        centerMode: true, //по-умолчанию выключена, перый 
+        centerMode: false, //по-умолчанию выключена, перый 
         //(который можно переназначить в initialSlide) слайд
         //выстраиваеться по центру при включенной опции 
         //добавляеться класс SLICK-CENTER
@@ -67,36 +67,13 @@ $(document).ready(function () {
     });
     $('.sliderbig').slick({
         arrows: false,
+        centerMode: true,
         fade: true, // будет только один слайд и они не листаться будут а заменяться
         asNavFor: ".slider"
     });
+
+$(".slider").on('afterChange', function(event, slick, currentSlide){
+     $(".cp").text(currentSlide + 1);
+  });
+
 });
-
-счетчик
-
-var $slider = $('.sliderbig');
-
-if ($slider.length) {
-  var currentSlide;
-  var slidesCount;
-  var sliderCounter = document.createElement('div');
-  sliderCounter.classList.add('slider__counter');
-  
-  var updateSliderCounter = function(slick, currentIndex) {
-    currentSlide = slick.slickCurrentSlide() + 1;
-    slidesCount = slick.slideCount;
-    $(sliderCounter).text(currentSlide + '/' +slidesCount)
-  };
-
-  $slider.on('init', function(event, slick) {
-    $slider.append(sliderCounter);
-    updateSliderCounter(slick);
-  });
-
-  $slider.on('afterChange', function(event, slick, currentSlide) {
-    updateSliderCounter(slick, currentSlide);
-  });
-
-  $slider.slick();
-}
-
